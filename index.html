@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivia Keiser | GenAI for Research Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #22d3ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Gradient Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        header {
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 99px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header .line {
+            height: 4px;
+            width: 60px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        /* Submission Cards */
+        .submissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .card-week {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-link.placeholder {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Course Info */
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .module-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .module-tag h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none;
+            }
+            header {
+                padding: 8rem 0 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">OK.AI</div>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#course">The Course</a></li>
+                <li><a href="#submissions">Submissions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="badge">Portfolio • 2025</div>
+            <h1 class="hero-title">Generative AI for <br>Work & Research</h1>
+            <p class="hero-subtitle">Exploring the frontier of responsible AI automation and its application in global health and epidemiology.</p>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am <strong>Olivia Keiser</strong>, a Professor in Epidemiology at the Institute of Global Health, University of Geneva. With over two decades of experience in clinical epidemiology and statistics, my work has focused on long-term antiretroviral therapy and HIV/TB dynamics in sub-Saharan Africa.</p>
+                    <p>In this rapidly evolving digital landscape, I am currently expanding my research methodology to integrate <strong>Generative AI</strong>. My goal is to leverage these tools for task automation, responsible data analysis, and enhanced research communication.</p>
+                    <p>Beyond the lab, I've spent years teaching "Evidence-Based Medicine" and tutoring "Problem-Based Learning"—experiences that drive my interest in how AI can transform pedagogy and knowledge dissemination.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Key Expertise</h3>
+                    <ul style="list-style: none; color: var(--text-dim); font-size: 0.95rem;">
+                        <li style="margin-bottom: 1rem;">🧬 Epidemiology & Global Health</li>
+                        <li style="margin-bottom: 1rem;">📊 Statistical Modeling (STATA, SAS)</li>
+                        <li style="margin-bottom: 1rem;">🏫 University Teaching & Mentorship</li>
+                        <li style="margin-bottom: 1rem;">🤖 Emerging AI Research Workflows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="course" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Course</h2>
+                <p style="color: var(--text-dim);">An 8-week intensive on No-Code AI tools for responsible research.</p>
+                <div class="line"></div>
+            </div>
+            <div class="course-modules">
+                <div class="module-tag">
+                    <h4>M1: Research Infrastructure</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">LLMs, Markdown, LaTeX, and AI-driven presentations.</p>
+                </div>
+                <div class="module-tag">
+                    <h4>M2: Data Analysis</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Automating data cleaning and visualization workflows.</p>
+                </div>
+                <div class="module-tag">
+                    <h4>M3: Literature & Retrieval</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Efficient systematic reviews and AI-assisted reading.</p>
+                </div>
+                <div class="module-tag">
+                    <h4>M4: Automation</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Connecting tools and building multi-step agents.</p>
+                </div>
+                <div class="module-tag">
+                    <h4>M5: Outreach</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Responsible dissemination and scientific visualization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="submissions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Weekly Submissions</h2>
+                <div class="line"></div>
+            </div>
+            <div class="submissions-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <span class="card-week">Week 01</span>
+                    <h3>Personal Portfolio</h3>
+                    <p>Building a structured research website using Markdown and HTML to showcase professional journey and AI integration.</p>
+                    <span class="card-link">View Current Page →</span>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <span class="card-week">Week 02</span>
+                    <h3>AI Data Workflow</h3>
+                    <p>Placeholder: Implementation of automated data processing for epidemiological datasets.</p>
+                    <span class="card-link placeholder">Coming Soon</span>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <span class="card-week">Week 03</span>
+                    <h3>The AI Agent</h3>
+                    <p>Placeholder: Building a custom research assistant to handle literature triage.</p>
+                    <span class="card-link placeholder">Coming Soon</span>
+                </div>
+                <!-- Card 4 -->
+                <div class="card">
+                    <span class="card-week">Capstone</span>
+                    <h3>Final Project</h3>
+                    <p>The culmination of 8 weeks: A fully automated research dissemination tool for global health findings.</p>
+                    <span class="card-link placeholder">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Olivia Keiser. Portfolio built for the GRAPH GenAI Course.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Institute of Global Health, University of Geneva</p>
+        </div>
+    </footer>
+</body>
+</html>
