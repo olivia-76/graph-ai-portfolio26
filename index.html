@@ -32,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Gradient Background */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -50,7 +49,6 @@
             padding: 0 2rem;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -93,7 +91,6 @@
             color: var(--text-main);
         }
 
-        /* Hero Section */
         header {
             padding: 10rem 0 6rem;
             text-align: center;
@@ -136,7 +133,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Section Layout */
         section {
             padding: 6rem 0;
         }
@@ -158,20 +154,6 @@
             border-radius: 2px;
         }
 
-        /* Grid Layouts */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-dim);
-        }
-
-        /* Submission Cards */
         .submissions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -184,8 +166,6 @@
             border-radius: 1.5rem;
             padding: 2rem;
             transition: transform 0.3s, border-color 0.3s;
-            position: relative;
-            overflow: hidden;
         }
 
         .card:hover {
@@ -218,37 +198,8 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .card-link.placeholder {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Course Info */
-        .course-modules {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .module-tag {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 1rem;
-        }
-
-        .module-tag h4 {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        /* Footer */
         footer {
             padding: 4rem 0;
             text-align: center;
@@ -256,145 +207,57 @@
             color: var(--text-dim);
             font-size: 0.85rem;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            nav ul {
-                display: none;
-            }
-            header {
-                padding: 8rem 0 4rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
+<div class="bg-gradient"></div>
 
-    <nav>
-        <div class="container">
-            <div class="logo">OK.AI</div>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#course">The Course</a></li>
-                <li><a href="#submissions">Submissions</a></li>
-            </ul>
+<section id="submissions">
+    <div class="container">
+        <div class="section-header">
+            <h2>Weekly Submissions</h2>
+            <div class="line"></div>
         </div>
-    </nav>
 
-    <header>
-        <div class="container">
-            <img src="https://github.com/olivia-76/graph-ai-portfolio26/blob/main/Fotos_Olivia_2022.jpg?raw=true" alt="Olivia Keiser" class="profile-avatar">
-            <div class="badge">Portfolio • 2025</div>
-            <h1 class="hero-title">Generative AI for <br>Work & Research</h1>
-            <p class="hero-subtitle">Exploring the frontier of responsible AI automation and its application in global health and epidemiology.</p>
-        </div>
-    </header>
-
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <div class="line"></div>
+        <div class="submissions-grid">
+            <div class="card">
+                <span class="card-week">Week 01</span>
+                <h3>Personal Portfolio</h3>
+                <p>Building a structured research website using Markdown and HTML to showcase professional journey and AI integration.</p>
+                <span class="card-link">View Current Page →</span>
             </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I am <strong>Olivia Keiser</strong>, a Professor in Epidemiology at the Institute of Global Health, University of Geneva. With over two decades of experience in clinical epidemiology and statistics, my work has focused on long-term antiretroviral therapy and HIV/TB dynamics in sub-Saharan Africa.</p>
-                    <p>In this rapidly evolving digital landscape, I am currently expanding my research methodology to integrate <strong>Generative AI</strong>. My goal is to leverage these tools for task automation, responsible data analysis, and enhanced research communication.</p>
-                    <p>Beyond the lab, I've spent years teaching "Evidence-Based Medicine" and tutoring "Problem-Based Learning"—experiences that drive my interest in how AI can transform pedagogy and knowledge dissemination.</p>
-                </div>
-                <div class="card">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Key Expertise</h3>
-                    <ul style="list-style: none; color: var(--text-dim); font-size: 0.95rem;">
-                        <li style="margin-bottom: 1rem;">🧬 Epidemiology & Global Health</li>
-                        <li style="margin-bottom: 1rem;">📊 Statistical Modeling (STATA, SAS)</li>
-                        <li style="margin-bottom: 1rem;">🏫 University Teaching & Mentorship</li>
-                        <li style="margin-bottom: 1rem;">🤖 Emerging AI Research Workflows</li>
-                    </ul>
-                </div>
+
+            <div class="card">
+                <span class="card-week">Week 02</span>
+                <h3>Workshop 2: Automated Data Analysis</h3>
+                <p>Exploratory analysis of Gapminder data using AI tools to examine relationships between global development indicators.</p>
+                <a class="card-link" href="https://olivia-76.github.io/graph-ai-portfolio26/gapminder_report.html" target="_blank">
+                    View Report →
+                </a>
+            </div>
+
+            <div class="card">
+                <span class="card-week">Week 03</span>
+                <h3>The AI Agent</h3>
+                <p>Placeholder: Building a custom research assistant to handle literature triage.</p>
+                <span class="card-link" style="opacity:0.5;">Coming Soon</span>
+            </div>
+
+            <div class="card">
+                <span class="card-week">Capstone</span>
+                <h3>Final Project</h3>
+                <p>The culmination of 8 weeks: A fully automated research dissemination tool for global health findings.</p>
+                <span class="card-link" style="opacity:0.5;">Coming Soon</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="course" style="background: rgba(255, 255, 255, 0.02);">
-        <div class="container">
-            <div class="section-header">
-                <h2>The Course</h2>
-                <p style="color: var(--text-dim);">An 8-week intensive on No-Code AI tools for responsible research.</p>
-                <div class="line"></div>
-            </div>
-            <div class="course-modules">
-                <div class="module-tag">
-                    <h4>M1: Research Infrastructure</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">LLMs, Markdown, LaTeX, and AI-driven presentations.</p>
-                </div>
-                <div class="module-tag">
-                    <h4>M2: Data Analysis</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">Automating data cleaning and visualization workflows.</p>
-                </div>
-                <div class="module-tag">
-                    <h4>M3: Literature & Retrieval</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">Efficient systematic reviews and AI-assisted reading.</p>
-                </div>
-                <div class="module-tag">
-                    <h4>M4: Automation</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">Connecting tools and building multi-step agents.</p>
-                </div>
-                <div class="module-tag">
-                    <h4>M5: Outreach</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">Responsible dissemination and scientific visualization.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="submissions">
-        <div class="container">
-            <div class="section-header">
-                <h2>Weekly Submissions</h2>
-                <div class="line"></div>
-            </div>
-            <div class="submissions-grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <span class="card-week">Week 01</span>
-                    <h3>Personal Portfolio</h3>
-                    <p>Building a structured research website using Markdown and HTML to showcase professional journey and AI integration.</p>
-                    <span class="card-link">View Current Page →</span>
-                </div>
-                <!-- Card 2 -->
-                <div class="card">
-                    <span class="card-week">Week 02</span>
-                    <h3>AI Data Workflow</h3>
-                    <p>Placeholder: Implementation of automated data processing for epidemiological datasets.</p>
-                    <span class="card-link placeholder">Coming Soon</span>
-                </div>
-                <!-- Card 3 -->
-                <div class="card">
-                    <span class="card-week">Week 03</span>
-                    <h3>The AI Agent</h3>
-                    <p>Placeholder: Building a custom research assistant to handle literature triage.</p>
-                    <span class="card-link placeholder">Coming Soon</span>
-                </div>
-                <!-- Card 4 -->
-                <div class="card">
-                    <span class="card-week">Capstone</span>
-                    <h3>Final Project</h3>
-                    <p>The culmination of 8 weeks: A fully automated research dissemination tool for global health findings.</p>
-                    <span class="card-link placeholder">Coming Soon</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Olivia Keiser. Portfolio built for the GRAPH GenAI Course.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Institute of Global Health, University of Geneva</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Olivia Keiser. Portfolio built for the GRAPH GenAI Course.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Institute of Global Health, University of Geneva</p>
+    </div>
+</footer>
 </body>
 </html>
